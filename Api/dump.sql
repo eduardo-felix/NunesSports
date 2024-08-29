@@ -1,0 +1,8 @@
+create database nuneSport;
+
+create table Produtos (
+	id serial primary key,
+  	nome text not null,
+  	descricao text not null unique,
+  	preco numeric not null
+);
