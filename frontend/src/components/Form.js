@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useRefef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
@@ -10,8 +10,8 @@ const FormContainer = styled.form`
   flex-wrap: wrap;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 5px;
+  box-shadow: 0px 0px 15px #ccc;
+  border-radius: 10px;
 `;
 
 const InputArea = styled.div`
@@ -40,7 +40,7 @@ const Button = styled.button`
 `;
 
 const Form = ({ getProducts, onEdit, setOnEdit }) => {
-  const ref = useRefef();
+  const ref = useRef();
 
   useEffect(() => {
     if (onEdit) {
@@ -75,17 +75,17 @@ const Form = ({ getProducts, onEdit, setOnEdit }) => {
           preco: produto.preco.value,
           codigo: produto.codigo.value,
         })
-        .then(({ data }) => toast.success(data))
+        .then(({ data }) => toast.success("Produto editado com sucesso!"))
         .catch(({ data }) => toast.error(data));
     } else {
       await axios
-        .post("http://localhost:8800", {
+        .post("http://localhost:8800/produtos", {
           nome: produto.nome.value,
           descricao: produto.descricao.value,
           preco: produto.preco.value,
           codigo: produto.codigo.value,
         })
-        .then(({ data }) => toast.success(data))
+        .then(({ data }) => toast.success("Produto adicionado com sucesso!"))
         .catch(({ data }) => toast.error(data));
     }
 
@@ -101,7 +101,7 @@ const Form = ({ getProducts, onEdit, setOnEdit }) => {
   return (
     <FormContainer ref={ref} onSubmit={handleSubmit}>
       <InputArea>
-        <Label>Codigo</Label>
+        <Label>Nome</Label>
         <Input name="nome" />
       </InputArea>
       <InputArea>
