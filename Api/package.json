@@ -6,6 +6,6 @@
     "postgres": "^3.4.4"
   },
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon index.js"
   }
 }
