@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const cors = require("cors");
 const productRoute = require("./routes/productRoute.js");
@@ -12,4 +13,4 @@ app.use(cors());
 
 
 
-app.listen(8000, () => console.log('Server Rodando na porta 8000'));
+app.listen(8800, () => console.log('Server Rodando na porta 8800'));
